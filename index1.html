@@ -1,29 +1,37 @@
-<html>
-  <body>
-      <script type='text/javascript'>
-    function initEmbeddedMessaging() {
-        try {
-            embeddedservice_bootstrap.settings.language = 'en_US'; // For example, enter 'en' or 'en-US'
-            window.addEventListener("onEmbeddedMessagingReady", () => {
-            embeddedservice_bootstrap.prechatAPI.setHiddenPrechatFields({
-            "Name": "Gujapineni Test",
-            "Email": "testchat123@gmail.com"
-            });
-            });
-            embeddedservice_bootstrap.init(
-                '00D5i000003Nw40',
-                'TestChannel',
-                'https://forsys-8c-dev-ed.my.site.com/ESWTestChannel1771328346399',
-                {
-                    scrt2URL: 'https://forsys-8c-dev-ed.my.salesforce-scrt.com'
-                }
-            );
-        } catch (err) {
-            console.error('Error loading Embedded Messaging: ', err);
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hello World Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f8ff;
         }
-    };
-</script>
-<script type='text/javascript' src='https://forsys-8c-dev-ed.my.site.com/ESWTestChannel1771328346399/assets/js/bootstrap.min.js' onload='initEmbeddedMessaging()'></script>
+        .container {
+            text-align: center;
+            padding: 2rem;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #032D60;
+        }
+    </style>
+</head>
+<body>
 
-    </body>
-  </html>
+    <div class="container">
+        <h1>Hello World!</h1>
+        <p>This is a standard HTML page without scripts or Apex tags.</p>
+    </div>
+
+</body>
+</html>
