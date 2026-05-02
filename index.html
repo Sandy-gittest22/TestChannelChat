@@ -166,28 +166,41 @@
     </script>
     
     <script type='text/javascript'>
-        function initEmbeddedMessaging() {
-            try {
-                embeddedservice_bootstrap.settings.language = 'en_US'; 
-                window.addEventListener("onEmbeddedMessagingReady", () => {
-    embeddedservice_bootstrap.prechatAPI.setHiddenPrechatFields({
-        "Name": "Gujapineni Test",
-        "Email": "sandhyagujapineni@gmail.com"
-    });
-});
-                embeddedservice_bootstrap.init(
-                    '00D5i000003Nw40',
-                    'TestChannel',
-                    'https://forsys-8c-dev-ed.my.site.com/ESWTestChannel1771328346399',
-                    {
-                        scrt2URL: 'https://forsys-8c-dev-ed.my.salesforce-scrt.com'
-                    }
-                );
-            } catch (err) {
-                console.error('Error loading Embedded Messaging: ', err);
-            }
-        };
-    </script>
+    function initEmbeddedMessaging() {
+        try {
+            embeddedservice_bootstrap.settings.language = 'en_US'; 
+
+            // This event fires when the chat is ready to receive data
+            window.addEventListener("onEmbeddedMessagingReady", () => {
+                console.log("Chat ready: Setting Pre-chat and Identity Token");
+
+                // 1. Set your Hidden Pre-chat Fields
+                embeddedservice_bootstrap.prechatAPI.setHiddenPrechatFields({
+                    "Name": "Gujapineni Test",
+                    "Email": "sandhyagujapineni@gmail.com"
+                });
+
+                // 2. Set your Identity Token (Authorization)
+                embeddedservice_bootstrap.userVerificationAPI.setIdentityToken({
+                    identityTokenType: "JWT",
+                    identityToken: "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6Ik15V2ViQ2hhdEtleTEyMyJ9.eyJpc3MiOiJzYW5keS1naXR0ZXN0MjIuZ2l0aHViLmlvIiwic3ViIjoiMTIzNDUiLCJpYXQiOjE3MTQ3MzAwMDB9.WKzabqpJpk3ufPaKXh30eWnt53R_NojIW8WRb1cgOrG0RyeDrXujtQ-J1eJXR3ILrLrT8C1grBVJsAcv7uOeqyJa-53NDjBlNok2HScJRNE20zSX3mu4Dy8MgQHIiN0HNpK6kJWqUWy1UtOdpAyIeBLWMb0YkvylTn9AtGm3IoAva_czqnKk6244ul_MloNhdIiO3L60AWknLeA1ya1ibviUunhQ2kmQPBJJazaOchwU-cqgSBD7FR65QZH4A8BTA2tJAhfTy3h40bs9ye0owTbSO9Hx97_HbuwrSciRsucbD511vQscxVacx35TxsIfkZ-zCz_3UXnndZizUjmqnw"
+                });
+            });
+
+            // Initialize the component
+            embeddedservice_bootstrap.init(
+                '00D5i000003Nw40',
+                'TestChannel',
+                'https://forsys-8c-dev-ed.my.site.com/ESWTestChannel1771328346399',
+                {
+                    scrt2URL: 'https://forsys-8c-dev-ed.my.salesforce-scrt.com'
+                }
+            );
+        } catch (err) {
+            console.error('Error loading Embedded Messaging: ', err);
+        }
+    };
+</script>
     <script type='text/javascript' src='https://forsys-8c-dev-ed.my.site.com/ESWTestChannel1771328346399/assets/js/bootstrap.min.js' onload='initEmbeddedMessaging()'></script>
 
 </body>
